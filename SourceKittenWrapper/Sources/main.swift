@@ -24,7 +24,7 @@ let path = "\(NSUUID().uuidString).swift"
 var args: [String]
 
 if spmModule.isEmpty {
-    args = ["-c", path] + compilerArgs.characters.split(separator: " ").map(String.init)
+    args = ["-c", path] + compilerArgs.split(separator: " ").map(String.init)
     if args.index(of: "-sdk") == nil {
         args.append(contentsOf: ["-sdk", sdkPath()])
     }
