@@ -72,7 +72,7 @@ while true {
         continue
     }
     let request = Request.codeCompletionRequest(file: path, contents: content, offset: offset, arguments: args)
-    let items = CodeCompletionItem.parse(response: request.send()).map {
+    let items = CodeCompletionItem.parse(response: try request.send()).map {
         ["abbr": $0.descriptionKey, "menu": $0.kind, "word": $0.sourcetext]
     }
     var data = toJson(items)
